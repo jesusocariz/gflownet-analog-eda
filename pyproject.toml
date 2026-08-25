@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gflownet-analog-eda"
+version = "0.1.0"
+description = "GFlowNet-guided multi-objective search for analog circuit design"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Jesus Ocariz" }]
+dependencies = [
+  "matplotlib>=3.8,<4",
+  "numpy>=1.26,<3",
+  "pandas>=2.2,<3",
+  "scikit-learn>=1.4,<2",
+  "scipy>=1.12,<2",
+  "torch>=2.7,<3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+gfn-analog-eda = "advanced_pareto_experiment:main"
+
+[tool.setuptools]
+py-modules = [
+  "advanced_pareto_experiment",
+  "experiment",
+  "pareto_experiment",
+  "report_plots",
+  "simulator",
+  "spice_simulator",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["."]
+python_files = ["test_*.py"]
